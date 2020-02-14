@@ -1,0 +1,19 @@
+#!/bin/bash
+
+readonly DOCKER_{{ cookiecutter.repo|upper }}_HOME=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+
+# docker-{{ cookiecutter.repo }}
+function docker-{{ cookiecutter.repo }} () {
+  local command="docker run --rm -it ckaserer/hello-world"
+  echo "+ ${command} $@" && ${command} $@
+}
+readonly -f docker-{{ cookiecutter.repo }}
+[ "$?" -eq "0" ] || return $?
+
+# docker-{{ cookiecutter.repo }}-build
+function docker-{{ cookiecutter.repo }}-build () {
+  local command="docker build -t ckaserer/hello-world $@ ${DOCKER_{{ cookiecutter.repo|upper }}_HOME}"
+  echo "+ ${command}" && ${command}
+}
+readonly -f docker-{{ cookiecutter.repo }}-build
+[ "$?" -eq "0" ] || return $?
