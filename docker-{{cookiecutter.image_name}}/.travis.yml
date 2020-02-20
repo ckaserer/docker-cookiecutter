@@ -1,0 +1,29 @@
+version: "~> 1.0"
+os: linux
+language: shell
+services: docker
+notifications:
+  email:
+    on_success: never
+    on_failure: never
+  slack:
+    if: branch = master
+    template:
+    - "%{commit_subject}"
+    - build <%{build_url}|#%{build_number}> (<%{compare_url}|%{commit}>) @%{branch}
+    - by %{author} %{result} in %{duration}
+    on_success: change
+    on_failure: always
+env:
+  global: []
+before_install: curl -sSL https://raw.githubusercontent.com/ckaserer/bash-script-collection/master/bash-fetch-script-collection.sh | bash
+script: .ci/test.sh
+deploy:
+  provider: script
+  script: bash bash-script-collection/container-push-image.sh \
+            --image {{ cookiecutter.registry }}/{{ cookiecutter.image_name }} \
+            --username ${REGISTRY_USER} \
+            --password ${REGISTRY_PASS}
+  skip_cleanup: true
+  on:
+    branch: master

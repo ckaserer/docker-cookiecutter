@@ -27,7 +27,7 @@ Then the cookiecutter command ask for several questions on generated project as 
 ```
 cookiecutter git@github.com:ckaserer/docker-cookiecutter
 repo [changeme]: 
-docker_org [ckaserer]: 
+registry [ckaserer]: 
 git_org [ckaserer]: 
 ```
 

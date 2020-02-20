@@ -1,5 +1,4 @@
 {
-    "repo": "changeme",
-    "docker_org": "ckaserer",
-    "git_org": "ckaserer"
-}   
+    "registry": "docker.io/ckaserer",
+    "image_name": "changeme"
+} 

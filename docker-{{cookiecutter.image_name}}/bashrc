@@ -1,0 +1,35 @@
+#!/bin/bash
+
+readonly DOCKER_{{ cookiecutter.image_name|upper }}_HOME=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+
+# docker-{{ cookiecutter.image_name }}
+function docker-{{ cookiecutter.image_name }} () {
+  local command="docker run --rm -it ckaserer/{{ cookiecutter.image_name }}"
+  echo "+ ${command} $@" && ${command} $@
+}
+readonly -f docker-{{ cookiecutter.image_name }}
+[ "$?" -eq "0" ] || return $?
+
+# docker-{{ cookiecutter.image_name }}-build
+function docker-{{ cookiecutter.image_name }}-build () {
+  local command="docker build -t {{ cookiecutter.registry }}/{{ cookiecutter.image_name }} $@ ${DOCKER_{{ cookiecutter.image_name|upper }}_HOME}"
+  echo "+ ${command}" && ${command}
+}
+readonly -f docker-{{ cookiecutter.image_name }}-build
+[ "$?" -eq "0" ] || return $?
+
+# docker-{{ cookiecutter.image_name }}-login
+function docker-{{ cookiecutter.image_name }}-login () {
+  local command="docker login {{ cookiecutter.registry }}"
+  echo "+ ${command} $@" && ${command} $@
+}
+readonly -f docker-{{ cookiecutter.image_name }}-login
+[ "$?" -eq "0" ] || return $?
+
+# docker-{{ cookiecutter.image_name }}-push
+function docker-{{ cookiecutter.image_name }}-push () {
+  local command="docker push {{ cookiecutter.registry }}/{{ cookiecutter.image_name }}"
+  echo "+ ${command} $@" && ${command} $@
+}
+readonly -f docker-{{ cookiecutter.image_name }}-push
+[ "$?" -eq "0" ] || return $?

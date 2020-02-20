@@ -1,11 +1,11 @@
-[![Build Status](https://travis-ci.com/ckaserer/docker-{{ cookiecutter.repo }}.svg?branch=master)](https://travis-ci.com/ckaserer/docker-{{ cookiecutter.repo }})
-![Docker Pulls](https://img.shields.io/docker/pulls/ckaserer/{{ cookiecutter.repo }})
-![GitHub](https://img.shields.io/github/license/ckaserer/docker-{{ cookiecutter.repo }})
+[![Build Status](https://travis-ci.com/ckaserer/docker-{{ cookiecutter.image_name }}.svg?branch=master)](https://travis-ci.com/ckaserer/docker-{{ cookiecutter.image_name }})
+![Docker Pulls](https://img.shields.io/docker/pulls/ckaserer/{{ cookiecutter.image_name }})
+![GitHub](https://img.shields.io/github/license/ckaserer/docker-{{ cookiecutter.image_name }})
 ![Maintenance](https://img.shields.io/maintenance/yes/2020)
 <br>
 <br>
 
-# docker-{{ cookiecutter.repo }}
+# docker-{{ cookiecutter.image_name }}
 
 CentOS 7 container image with ...
 
@@ -18,12 +18,16 @@ CentOS 7 container image with ...
 3) remove the "Getting started" section in `README.md`
 4) write your own Dockerfile and enjoy CI and notifications
 
+---
+
 ## Quickstart
 
 ```
 docker-travis-add-slack-token "workspace:myToken"
 docker-travis-add-docker-credentials "dockerUsername"
 ```
+
+---
 
 ## Add docker credentials
 
