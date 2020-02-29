@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.com/ckaserer/docker-{{ cookiecutter.image_name }}.svg?branch=master)](https://travis-ci.com/ckaserer/docker-{{ cookiecutter.image_name }})
 ![Docker Pulls](https://img.shields.io/docker/pulls/ckaserer/{{ cookiecutter.image_name }})
-![GitHub](https://img.shields.io/github/license/ckaserer/docker-{{ cookiecutter.image_name }})
+![GitHub](https://img.shields.io/badge/license-GPL%20v3.0-brightgreen.svg)
 ![Maintenance](https://img.shields.io/maintenance/yes/2020)
 <br>
 <br>
@@ -24,7 +24,7 @@ CentOS 7 container image with ...
 
 ```
 docker-travis-add-slack-token "workspace:myToken"
-docker-travis-add-docker-credentials "dockerUsername"
+docker-travis-add-container-registry-credentials "dockerUsername"
 ```
 
 ---
@@ -36,13 +36,13 @@ docker-travis-add-docker-credentials "dockerUsername"
 ```
 git clone https://github.com/ckaserer/docker-travis-cli.git
 source docker-travis-cli/bashrc
-docker-travis-add-docker-credentials "dockerUsername"
+docker-travis-add-container-registry-credentials "dockerUsername"
 ```
 
 or run following command directly 
 
 ```
-docker run --rm -i -e TZ=Europe/Vienna -v $(pwd):/root -w=/root ckaserer/travis-cli add-docker-credentials "dockerUsername"
+docker run --rm -i -e TZ=Europe/Vienna -v $(pwd):/root -w=/root ckaserer/travis-cli add-container-registry-credentials "dockerUsername"
 ```
 
 ## How to set up slack notifications

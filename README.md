@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.com/ckaserer/docker-cookiecutter.svg?branch=master)](https://travis-ci.com/ckaserer/docker-cookiecutter)
-![GitHub](https://img.shields.io/github/license/ckaserer/docker-cookiecutter)
+![GitHub](https://img.shields.io/badge/license-GPL%20v3.0-brightgreen.svg)
 ![Maintenance](https://img.shields.io/maintenance/yes/2020)
 <br>
 <br>
@@ -19,19 +19,19 @@ Quick start
 To generate project from the docker-cookiecutter template, please run the following command.
 
 ```
-cookiecutter git@github.com:ckaserer/docker-cookiecutter
+cookiecutter https://github.com/ckaserer/docker-cookiecutter
+
 ```
 
 Then the cookiecutter command ask for several questions on generated project as follows.
 
 ```
-cookiecutter git@github.com:ckaserer/docker-cookiecutter
-repo [changeme]: 
-registry [ckaserer]: 
-git_org [ckaserer]: 
+cookiecutter https://github.com/ckaserer/docker-cookiecutter
+registry [docker.io/ckaserer]: 
+image_name [changeme]: 
 ```
 
-Then you get the generated project directory, ``docker-changeme``.
+Then you get the generated project directory, `docker-changeme`.
 
 Initial directories and files
 -----------------------------
@@ -39,17 +39,18 @@ Initial directories and files
 The following is the initial directory structure generated in the previous section.
 
 ```
-├── .ci                           <- scripts utilized in a CI can be put here
-│   └── test.sh                   <- build and validate image 
-├── .github                       <- github issue templates
+├── .ci
+│   └── test.sh                     <- put your tests here
+├── .dockerignore                   <- ignore files when building
+├── .github                         <- github issue templates
 │   └── ISSUE_TEMPLATE
 │       ├── bug_report.md
 │       └── feature_request.md
 ├── .gitignore
-├── .travis.yml                   <- travis ci definition
+├── .travis.yml                     <- slack notifications for our tests
 ├── CODE_OF_CONDUCT.md
-├── Dockerfile
-├── LICENSE                       <- GPLv3
-├── README.md
-└── bashrc                        <- define functions to build and run the docker image
+├── Dockerfile                      <- what we actually want
+├── LICENSE
+├── README.md                       <- badges and quickstart info
+└── bashrc                          <- bash functions for easy of use
 ```
